@@ -319,10 +319,28 @@
         <div class="heart"></div>
     </div>
     
-    <audio controls autoplay loop>
+    <audio id="background-music" loop>
     <source src="https://luisj17.github.io/lina/musica.mp3" type="audio/mpeg">
     Tu navegador no soporta la etiqueta de audio.
 </audio>
+
+<script>
+    // Detecta cualquier clic en la página para iniciar la música
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('background-music');
+        if (audio.paused) {
+            audio.play(); // Reproduce la música
+        }
+    });
+
+    // Intenta reproducir la música cuando la página se carga
+    window.onload = function() {
+        var audio = document.getElementById('background-music');
+        audio.play().catch(function(error) {
+            console.log('La reproducción automática ha sido bloqueada.');
+        });
+    };
+</script>
 
 
 </body>
